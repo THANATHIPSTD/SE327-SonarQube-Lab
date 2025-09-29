@@ -16,5 +16,6 @@ class AdvancedCalculatorTest {
         AdvancedCalculator calculator = new AdvancedCalculator();
         assertEquals(2.0, calculator.sqrt(4), 0.01);
     }
+
 }
 
