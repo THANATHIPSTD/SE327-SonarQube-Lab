@@ -3,37 +3,39 @@ package se331;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class AdvancedCalculatorTest {
+class CalculatorTest {
 
     @Test
-    void power_positiveExponent() {
-        AdvancedCalculator ac = new AdvancedCalculator();
-        assertEquals(8.0, ac.power(2, 3), 1e-9);
+    void testAdd() {
+        Calculator c = new Calculator();
+        assertEquals(7, c.add(3, 4));
     }
 
     @Test
-    void power_negativeExponent() {
-        AdvancedCalculator ac = new AdvancedCalculator();
-        assertEquals(0.125, ac.power(2, -3), 1e-9); // 2^-3 = 1/8
+    void testSubtract() {
+        Calculator c = new Calculator();
+        assertEquals(-1, c.subtract(3, 4));
     }
 
     @Test
-    void sqrt_positive() {
-        AdvancedCalculator ac = new AdvancedCalculator();
-        assertEquals(2.0, ac.sqrt(4), 1e-9);
+    void testMultiply() {
+        Calculator c = new Calculator();
+        assertEquals(12, c.multiply(3, 4));
     }
 
     @Test
-    void sqrt_zero() {
-        AdvancedCalculator ac = new AdvancedCalculator();
-        assertEquals(0.0, ac.sqrt(0), 1e-9);
+    void testDivide() {
+        Calculator c = new Calculator();
+        assertEquals(2.5, c.divide(5, 2), 1e-9);
     }
 
     @Test
-    void sqrt_negative_shouldThrow() {
-        AdvancedCalculator ac = new AdvancedCalculator();
-        IllegalArgumentException ex =
-                assertThrows(IllegalArgumentException.class, () -> ac.sqrt(-1));
-        assertTrue(ex.getMessage().contains("square root of a negative"));
+    void testDivideByZero() {
+        Calculator c = new Calculator();
+        IllegalArgumentException ex = assertThrows(
+                IllegalArgumentException.class,
+                () -> c.divide(5, 0)
+        );
+        assertTrue(ex.getMessage().contains("Division by zero"));
     }
 }
